@@ -12,6 +12,19 @@
 <body class="fade-in">
     <!-- Cinematic Intro Animation -->
     <div class="intro-overlay" id="introOverlay">
+        <div class="intro-globe-container" id="introGlobe">
+            <svg class="intro-globe" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="90" stroke="white" stroke-width="2" fill="none"/>
+                <ellipse cx="100" cy="100" rx="30" ry="90" stroke="white" stroke-width="2" fill="none"/>
+                <ellipse cx="100" cy="100" rx="90" ry="30" stroke="white" stroke-width="2" fill="none"/>
+                <line x1="100" y1="10" x2="100" y2="190" stroke="white" stroke-width="2"/>
+                <line x1="10" y1="100" x2="190" y2="100" stroke="white" stroke-width="2"/>
+            </svg>
+            <div class="connection-points" id="connectionPoints">
+                <!-- Creator connection points will be added via JavaScript -->
+            </div>
+            <div class="intro-globe-label">CONNECTING CREATORS</div>
+        </div>
         <div class="grain-overlay"></div>
         <canvas id="topoCanvas" class="topo-canvas"></canvas>
         <div class="city-grid" id="cityGrid">
@@ -49,9 +62,7 @@
             <line class="connect-line line5" x1="25%" y1="70%" x2="45%" y2="60%"></line>
         </svg>
         
-        <div class="intro-text" id="introText">
-            <h1 class="intro-title">BLACK CREATIVITY.<br>CREATORWURLD.</h1>
-        </div>
+        <!-- Intro text removed -->
     </div>
 
     <header>
@@ -63,9 +74,26 @@
             </div>
             <div class="container">
                 <div class="nav-brand">
+                    <svg class="logo-globe" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" stroke="white" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="16" rx="5" ry="14" stroke="white" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="16" rx="14" ry="5" stroke="white" stroke-width="1.5" fill="none"/>
+                        <line x1="16" y1="2" x2="16" y2="30" stroke="white" stroke-width="1.5"/>
+                        <line x1="2" y1="16" x2="30" y2="16" stroke="white" stroke-width="1.5"/>
+                    </svg>
                     <h1><a href="index.html" class="brand-link">CREATORWURLD</a></h1>
                 </div>
-                <ul class="nav-links">
+                <div class="nav-actions">
+                    <button class="menu-toggle" id="menuToggle">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Hidden Menu -->
+            <div class="hidden-menu" id="hiddenMenu">
+                <ul class="menu-links">
                     <li><a href="#discovery">Discovery</a></li>
                     <li><a href="#collab-board">Collab Board</a></li>
                     <li><a href="#underground">Underground</a></li>
@@ -107,293 +135,94 @@
                 </div>
 
                 <div class="hero-content">
-                    <h2 class="hero-title" data-text="Create Together, Grow Together" data-hover="BLACK CREATIVITY.">Create Together,<br>Grow Together</h2>
-                    <p class="hero-subtitle">
-                        Connect with content creators in your city who match your vibe and goals.<br>
-                        Collaborate on videos, music, ideas, and bring your creative vision to life.
-                    </p>
+                    <h2 class="hero-title-minimal">CREATE YOUR<br>WURLD</h2>
+                    <p class="hero-subtitle-minimal">Find your perfect collab partner. Build together.</p>
 
-                    <div class="search-container">
-                        <div class="search-box">
-                            <div class="search-input">
-                                <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM18 18l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <input type="text" placeholder="Search by niche, platform, or skills..." class="input-field">
+                    <!-- Single High-Impact CTA -->
+                    <button class="cta-get-started">GET STARTED</button>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <svg class="scroll-wave" viewBox="0 0 20 100" xmlns="http://www.w3.org/2000/svg">
+                        <path id="wavePath" d="M10,0 Q10,25 10,50 T10,100" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/>
+                    </svg>
+                    <div class="scroll-text">SCROLL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Section -->
+        <section class="social-proof-section">
+            <div class="grain-overlay"></div>
+            <div class="container">
+                <h3 class="proof-title">TRUSTED BY CREATORS WHO'VE GROWN TOGETHER</h3>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="quote-mark">"</div>
+                        <p class="testimonial-text">Found my perfect videographer in 2 days. We've done 15 collabs since and gained 500K followers together.</p>
+                        <div class="testimonial-author">
+                            <img src="creatorimages/cover-kai-cenat-2025-billboard-bb2-andrew-hetherington-8-1240.webp" alt="Creator" class="author-avatar">
+                            <div class="author-info">
+                                <span class="author-name">@KaiCenat</span>
+                                <span class="author-platform">YouTube • 2M followers</span>
                             </div>
-                            <div class="location-input">
-                                <svg class="location-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M10 1c-3.866 0-7 3.134-7 7 0 5.25 7 11 7 11s7-5.75 7-11c0-3.866-3.134-7-7-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <input type="text" placeholder="City" class="input-field">
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="quote-mark">"</div>
+                        <p class="testimonial-text">This platform literally changed my career. Met a producer who understood my sound. Now we're charting.</p>
+                        <div class="testimonial-author">
+                            <img src="creatorimages/Gemini_Generated_Image_7joeuc7joeuc7joe.png" alt="Creator" class="author-avatar">
+                            <div class="author-info">
+                                <span class="author-name">@HillBoyNeal</span>
+                                <span class="author-platform">YouTube • 500K Subscribers</span>
                             </div>
-                            <button class="search-btn">Search</button>
                         </div>
                     </div>
-
-                    <div class="category-pills">
-                        <button class="pill">YouTube</button>
-                        <button class="pill">TikTok</button>
-                        <button class="pill">Music</button>
-                        <button class="pill">Photography</button>
-                        <button class="pill">Podcast</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="creators-section" id="creators">
-            <div class="grain-overlay"></div>
-            <div class="section-grid">
-                <div class="grid-line grid-h" style="top: 20%"></div>
-                <div class="grid-line grid-h" style="top: 50%"></div>
-                <div class="grid-line grid-h" style="top: 80%"></div>
-                <div class="grid-line grid-v" style="left: 25%"></div>
-                <div class="grid-line grid-v" style="left: 50%"></div>
-                <div class="grid-line grid-v" style="left: 75%"></div>
-            </div>
-            <svg class="fluid-connection-line" id="fluidLine" viewBox="0 0 100 800" preserveAspectRatio="none">
-                <path id="connectionPath" d="" stroke="rgba(255,255,255,0.8)" stroke-width="2" fill="none" 
-                      filter="url(#glow)" stroke-dasharray="1000" stroke-dashoffset="1000"/>
-                <defs>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                        <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
-                </defs>
-            </svg>
-            <div class="container">
-                <div class="creators-header">
-                    <h2 class="creators-title">Creators Near You</h2>
-                    <p class="creators-subtitle">Match with local creators and start collaborating today</p>
-                </div>
-
-                <div class="creators-grid" id="creatorsGrid">
-                    <!-- Creator cards will be inserted here by JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <section class="blog-section" id="blog">
-            <div class="grain-overlay"></div>
-            <div class="section-grid">
-                <div class="grid-line grid-h" style="top: 15%"></div>
-                <div class="grid-line grid-h" style="top: 45%"></div>
-                <div class="grid-line grid-h" style="top: 75%"></div>
-                <div class="grid-line grid-v" style="left: 20%"></div>
-                <div class="grid-line grid-v" style="left: 50%"></div>
-                <div class="grid-line grid-v" style="left: 80%"></div>
-            </div>
-            <svg class="section-connections" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <line class="connect-line" x1="25%" y1="20%" x2="50%" y2="50%" stroke="rgba(255,255,255,0.15)" stroke-width="1"></line>
-                <line class="connect-line" x1="50%" y1="50%" x2="75%" y2="80%" stroke="rgba(255,255,255,0.15)" stroke-width="1"></line>
-            </svg>
-            <div class="container">
-                <div class="blog-header">
-                    <div class="blog-header-content">
-                        <h2 class="blog-title">Latest from the Blog</h2>
-                        <p class="blog-subtitle">Insights, tips, and stories to inspire your creative journey</p>
-                    </div>
-                    <a href="#" class="view-all-link">
-                        View All Posts
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7 3l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="blog-grid" id="blogGrid">
-                    <!-- Blog cards will be inserted here by JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Discovery Map Section -->
-        <section class="discovery-section" id="discovery">
-            <div class="grain-overlay"></div>
-            <div class="section-grid">
-                <div class="grid-line grid-h" style="top: 25%"></div>
-                <div class="grid-line grid-h" style="top: 50%"></div>
-                <div class="grid-line grid-h" style="top: 75%"></div>
-                <div class="grid-line grid-v" style="left: 25%"></div>
-                <div class="grid-line grid-v" style="left: 75%"></div>
-            </div>
-            
-            <div class="discovery-container">
-                <!-- Filter Sidebar -->
-                <aside class="filter-sidebar">
-                    <h3 class="filter-title">FILTERS</h3>
-                    <div class="filter-group">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="music">Music</button>
-                        <button class="filter-btn" data-filter="video">Video</button>
-                        <button class="filter-btn" data-filter="fashion">Fashion</button>
-                        <button class="filter-btn" data-filter="photography">Photography</button>
-                    </div>
                     
-                    <div class="area-list">
-                        <h3 class="area-title">IN YOUR AREA</h3>
-                        <div class="area-creators" id="areaCreators">
-                            <!-- Will be populated by JavaScript -->
-                        </div>
-                    </div>
-                </aside>
-                
-                <!-- Map Container -->
-                <div class="map-container">
-                    <div id="discoveryMap" class="discovery-map">
-                        <!-- Map markers will be added here -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Collab Board Section -->
-        <section class="collab-board-section" id="collab-board">
-            <div class="grain-overlay"></div>
-            <div class="section-grid">
-                <div class="grid-line grid-h" style="top: 30%"></div>
-                <div class="grid-line grid-h" style="top: 60%"></div>
-                <div class="grid-line grid-v" style="left: 33%"></div>
-                <div class="grid-line grid-v" style="left: 66%"></div>
-            </div>
-            
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">COLLAB BOARD</h2>
-                    <p class="section-subtitle">Find projects, post opportunities, make moves</p>
-                    <button class="post-project-btn">+ POST PROJECT</button>
-                </div>
-                
-                <div class="collab-grid" id="collabGrid">
-                    <!-- Collab posts will be inserted here by JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- The Underground Section -->
-        <section class="underground-section" id="underground">
-            <div class="grain-overlay"></div>
-            <div class="section-grid">
-                <div class="grid-line grid-h" style="top: 20%"></div>
-                <div class="grid-line grid-h" style="top: 80%"></div>
-                <div class="grid-line grid-v" style="left: 40%"></div>
-                <div class="grid-line grid-v" style="left: 60%"></div>
-            </div>
-            
-            <div class="container">
-                <div class="underground-header">
-                    <h2 class="section-title">THE UNDERGROUND</h2>
-                    <p class="section-subtitle">Culture, stories, and the creative pulse of the city</p>
-                </div>
-                
-                <div class="underground-grid">
-                    <!-- Featured Story -->
-                    <div class="featured-story" id="featuredStory">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                    
-                    <!-- Secondary Stories -->
-                    <div class="story-grid" id="storyGrid">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                    
-                    <!-- Event Calendar -->
-                    <div class="event-calendar">
-                        <h3 class="calendar-title">UPCOMING EVENTS</h3>
-                        <div class="event-list" id="eventList">
-                            <!-- Will be populated by JavaScript -->
+                    <div class="testimonial-card">
+                        <div class="quote-mark">"</div>
+                        <p class="testimonial-text">No more shooting alone. Found a whole crew of creatives in my city. Our collabs hit different now.</p>
+                        <div class="testimonial-author">
+                            <img src="creatorimages/aHR0cDovL2ltYWdlLmloZWFydC5jb20vaW1hZ2VzL2FydGlzdHMvMDgvNjcvMTAvNjdmNDMzYWVhNWZiNWIzMTBhNTRiYzU5LmpwZw==.webp" alt="Creator" class="author-avatar">
+                            <div class="author-info">
+                                <span class="author-name">@DDG</span>
+                                <span class="author-platform">Music/Streamer • 300K IG</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Inbox Section -->
-        <section class="inbox-section" id="inbox">
-            <div class="grain-overlay"></div>
-            <div class="section-grid">
-                <div class="grid-line grid-v" style="left: 35%"></div>
-            </div>
-            
-            <div class="inbox-container">
-                <!-- Conversation List -->
-                <aside class="conversation-list">
-                    <div class="inbox-header">
-                        <h3 class="inbox-title">MESSAGES</h3>
-                        <button class="new-message-btn">+</button>
-                    </div>
-                    <div class="conversations" id="conversationList">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                </aside>
-                
-                <!-- Message Thread -->
-                <div class="message-thread">
-                    <div class="thread-header" id="threadHeader">
-                        <h3>Select a conversation</h3>
-                    </div>
-                    <div class="messages" id="messageThread">
-                        <!-- Messages will appear here -->
-                    </div>
-                    <div class="message-input-container">
-                        <input type="text" class="message-input" placeholder="Type your message...">
-                        <button class="attach-file-btn">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M18 10l-6 6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <button class="send-btn">Send</button>
+                <!-- How It Works -->
+                <div class="how-it-works">
+                    <h3 class="section-title">HOW IT WORKS</h3>
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <div class="step-number">01</div>
+                            <h4 class="step-title">Create Your Profile</h4>
+                            <p class="step-description">Show off your work, skills, and what you're looking for. Takes 2 minutes.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">02</div>
+                            <h4 class="step-title">Find Your Match</h4>
+                            <p class="step-description">Search by location, niche, and platform. Our algorithm shows you perfect fits.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">03</div>
+                            <h4 class="step-title">Start Creating</h4>
+                            <p class="step-description">Connect, collaborate, and create content that stands out. Track your success.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav">
-        <a href="#hero" class="nav-item active" data-page="home">
-            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="nav-label">Home</span>
-        </a>
-        <a href="#discovery" class="nav-item" data-page="discovery">
-            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="nav-label">Discover</span>
-        </a>
-        <a href="#collab-board" class="nav-item" data-page="collab">
-            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="nav-label">Collab</span>
-        </a>
-        <a href="#underground" class="nav-item" data-page="feed">
-            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="nav-label">Feed</span>
-        </a>
-        <a href="#inbox" class="nav-item" data-page="profile">
-            <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="nav-label">Profile</span>
-        </a>
-    </nav>
-
     <script src="script.js"></script>
 </body>
 </html>
+
+        <!-- Gated Section - Visible after profile creation -->

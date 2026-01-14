@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>CREATORWURLD - Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="grain-overlay"></div>
+            <div class="navbar-grid">
+                <div class="grid-line grid-v" style="left: 30%"></div>
+                <div class="grid-line grid-v" style="left: 70%"></div>
+            </div>
+            <div class="container">
+                <div class="nav-brand">
+                    <svg class="logo-globe" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" stroke="white" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="16" rx="5" ry="14" stroke="white" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="16" rx="14" ry="5" stroke="white" stroke-width="1.5" fill="none"/>
+                        <line x1="16" y1="2" x2="16" y2="30" stroke="white" stroke-width="1.5"/>
+                        <line x1="2" y1="16" x2="30" y2="16" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                    <h1><a href="features.html" class="brand-link">CREATORWURLD</a></h1>
+                </div>
+                <div class="nav-actions">
+                    <button class="menu-toggle" id="menuToggle">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Hidden Menu -->
+            <div class="hidden-menu" id="hiddenMenu">
+                <ul class="menu-links">
+                    <li><a href="#creators">Creators</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#discovery">Discovery</a></li>
+                    <li><a href="#collab-board">Collab Board</a></li>
+                    <li><a href="#underground">Underground</a></li>
+                    <li><a href="#inbox">Inbox</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="creators-section" id="creators">
+            <div class="grain-overlay"></div>
+            <div class="section-grid">
+                <div class="grid-line grid-h" style="top: 20%"></div>
+                <div class="grid-line grid-h" style="top: 50%"></div>
+                <div class="grid-line grid-h" style="top: 80%"></div>
+                <div class="grid-line grid-v" style="left: 25%"></div>
+                <div class="grid-line grid-v" style="left: 50%"></div>
+                <div class="grid-line grid-v" style="left: 75%"></div>
+            </div>
+            <svg class="fluid-connection-line" id="fluidLine" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path id="connectionPath" d="" stroke="rgba(255,255,255,0.8)" stroke-width="2" fill="none" 
+                      filter="url(#glow)" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+                <defs>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+            </svg>
+            <div class="container">
+                <div class="creators-header">
+                    <div class="header-content">
+                        <h2 class="creators-title">Creators Near You</h2>
+                        <p class="creators-subtitle">Match with local creators and start collaborating today</p>
+                    </div>
+                    
+                    <!-- Vibe Filters - Horizontal Scroll -->
+                    <div class="vibe-filters">
+                        <div class="vibe-filters-inner">
+                            <button class="vibe-btn active">All Vibes</button>
+                            <button class="vibe-btn">Grungy</button>
+                            <button class="vibe-btn">Lo-Fi</button>
+                            <button class="vibe-btn">High-Glow</button>
+                            <button class="vibe-btn">Brutalist</button>
+                            <button class="vibe-btn">Minimalist</button>
+                            <button class="vibe-btn">Cinematic</button>
+                            <button class="vibe-btn">Editorial</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Mini Map Widget -->
+                    <div class="mini-map-widget">
+                        <div class="map-title">LIVE IN YOUR AREA</div>
+                        <div class="mini-map">
+                            <div class="map-hotspot" style="top: 30%; left: 40%"></div>
+                            <div class="map-hotspot" style="top: 60%; left: 65%"></div>
+                            <div class="map-hotspot" style="top: 45%; left: 25%"></div>
+                            <div class="map-hotspot" style="top: 70%; left: 80%"></div>
+                            <div class="map-hotspot" style="top: 25%; left: 70%"></div>
+                            <svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <line x1="40" y1="30" x2="65" y2="60" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+                                <line x1="25" y1="45" x2="40" y2="30" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+                                <line x1="65" y1="60" x2="80" y2="70" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+                            </svg>
+                        </div>
+                        <div class="map-count">15 creators online</div>
+                    </div>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="bento-grid" id="creatorsGrid">
+                    <!-- Creator cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-section" id="blog">
+            <div class="grain-overlay"></div>
+            <div class="section-grid">
+                <div class="grid-line grid-h" style="top: 15%"></div>
+                <div class="grid-line grid-h" style="top: 45%"></div>
+                <div class="grid-line grid-h" style="top: 75%"></div>
+                <div class="grid-line grid-v" style="left: 20%"></div>
+                <div class="grid-line grid-v" style="left: 50%"></div>
+                <div class="grid-line grid-v" style="left: 80%"></div>
+            </div>
+            <svg class="section-connections" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <line class="connect-line" x1="25%" y1="20%" x2="50%" y2="50%" stroke="rgba(255,255,255,0.15)" stroke-width="1"></line>
+                <line class="connect-line" x1="50%" y1="50%" x2="75%" y2="80%" stroke="rgba(255,255,255,0.15)" stroke-width="1"></line>
+            </svg>
+            <div class="container">
+                <div class="blog-header">
+                    <div class="blog-header-content">
+                        <h2 class="blog-title">Latest from the Blog</h2>
+                        <p class="blog-subtitle">Insights, tips, and stories to inspire your creative journey</p>
+                    </div>
+                    <a href="#" class="view-all-link">
+                        View All Posts
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 3l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="blog-grid" id="blogGrid">
+                    <!-- Blog cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Discovery Map Section -->
+        <section class="discovery-section" id="discovery">
+            <div class="grain-overlay"></div>
+            <div class="section-grid">
+                <div class="grid-line grid-h" style="top: 25%"></div>
+                <div class="grid-line grid-h" style="top: 50%"></div>
+                <div class="grid-line grid-h" style="top: 75%"></div>
+                <div class="grid-line grid-v" style="left: 25%"></div>
+                <div class="grid-line grid-v" style="left: 75%"></div>
+            </div>
+            
+            <div class="discovery-container">
+                <!-- Filter Sidebar -->
+                <aside class="filter-sidebar">
+                    <h3 class="filter-title">FILTERS</h3>
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="music">Music</button>
+                        <button class="filter-btn" data-filter="video">Video</button>
+                        <button class="filter-btn" data-filter="fashion">Fashion</button>
+                        <button class="filter-btn" data-filter="photography">Photography</button>
+                    </div>
+                    
+                    <div class="area-list">
+                        <h3 class="area-title">IN YOUR AREA</h3>
+                        <div class="area-creators" id="areaCreators">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Map Container -->
+                <div class="map-container">
+                    <div id="discoveryMap" class="discovery-map">
+                        <!-- Map markers will be added here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collab Board Section -->
+        <section class="collab-board-section" id="collab-board">
+            <div class="grain-overlay"></div>
+            <div class="section-grid">
+                <div class="grid-line grid-h" style="top: 30%"></div>
+                <div class="grid-line grid-h" style="top: 60%"></div>
+                <div class="grid-line grid-v" style="left: 33%"></div>
+                <div class="grid-line grid-v" style="left: 66%"></div>
+            </div>
+            
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">COLLAB BOARD</h2>
+                    <p class="section-subtitle">Find projects, post opportunities, make moves</p>
+                    <button class="post-project-btn">+ POST PROJECT</button>
+                </div>
+                
+                <div class="collab-grid" id="collabGrid">
+                    <!-- Collab posts will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- The Underground Section -->
+        <section class="underground-section" id="underground">
+            <div class="grain-overlay"></div>
+            <div class="section-grid">
+                <div class="grid-line grid-h" style="top: 20%"></div>
+                <div class="grid-line grid-h" style="top: 80%"></div>
+                <div class="grid-line grid-v" style="left: 40%"></div>
+                <div class="grid-line grid-v" style="left: 60%"></div>
+            </div>
+            
+            <div class="container">
+                <div class="underground-header">
+                    <h2 class="section-title">THE UNDERGROUND</h2>
+                    <p class="section-subtitle">Culture, stories, and the creative pulse of the city</p>
+                </div>
+                
+                <div class="underground-grid">
+                    <!-- Featured Story -->
+                    <div class="featured-story" id="featuredStory">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    
+                    <!-- Secondary Stories -->
+                    <div class="story-grid" id="storyGrid">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    
+                    <!-- Event Calendar -->
+                    <div class="event-calendar">
+                        <h3 class="calendar-title">UPCOMING EVENTS</h3>
+                        <div class="event-list" id="eventList">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inbox Section -->
+        <section class="inbox-section" id="inbox">
+            <div class="grain-overlay"></div>
+            <div class="section-grid">
+                <div class="grid-line grid-v" style="left: 35%"></div>
+            </div>
+            
+            <div class="inbox-container">
+                <!-- Conversation List -->
+                <aside class="conversation-list">
+                    <div class="inbox-header">
+                        <h3 class="inbox-title">MESSAGES</h3>
+                        <button class="new-message-btn">+</button>
+                    </div>
+                    <div class="conversations" id="conversationList">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </aside>
+                
+                <!-- Message Thread -->
+                <div class="message-thread">
+                    <div class="thread-header" id="threadHeader">
+                        <h3>Select a conversation</h3>
+                    </div>
+                    <div class="messages" id="messageThread">
+                        <!-- Messages will appear here -->
+                    </div>
+                    <div class="message-input-container">
+                        <input type="text" class="message-input" placeholder="Type your message...">
+                        <button class="attach-file-btn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 10l-6 6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="send-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Side-Drawer Quick View -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="side-drawer" id="sideDrawer">
+        <button class="drawer-close" id="drawerClose">×</button>
+        <div class="drawer-header">
+            <h2 class="drawer-creator-name" id="drawerCreatorName">Creator Name</h2>
+            <p class="drawer-creator-role" id="drawerCreatorRole">Role</p>
+        </div>
+        
+        <div class="drawer-stats">
+            <div class="drawer-stat">
+                <span class="drawer-stat-number">25K</span>
+                <span class="drawer-stat-label">Followers</span>
+            </div>
+            <div class="drawer-stat">
+                <span class="drawer-stat-number">150</span>
+                <span class="drawer-stat-label">Projects</span>
+            </div>
+            <div class="drawer-stat">
+                <span class="drawer-stat-number">4.9</span>
+                <span class="drawer-stat-label">Rating</span>
+            </div>
+        </div>
+        
+        <div class="drawer-portfolio">
+            <img src="creatorimages/Gemini_Generated_Image_7joeuc7joeuc7joe.png" alt="Portfolio" class="drawer-portfolio-image" id="drawerPortfolioImage">
+        </div>
+        
+        <button class="pitch-collab-btn" id="pitchCollabBtn">PITCH COLLAB</button>
+    </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

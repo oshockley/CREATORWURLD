@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Profile - CREATORWURLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="onboarding-container">
+        <div class="grain-overlay"></div>
+        
+        <header class="onboarding-header">
+            <a href="index.html" class="back-link">← Back</a>
+            <h1 class="onboarding-logo">CREATORWURLD</h1>
+        </header>
+
+        <main class="onboarding-main">
+            <div class="onboarding-content">
+                <h2 class="onboarding-title">CREATE YOUR PROFILE</h2>
+                <p class="onboarding-subtitle">Let's build your creator identity</p>
+
+                <form class="profile-form" id="profileForm">
+                    <!-- Basic Info -->
+                    <div class="form-section">
+                        <h3 class="section-title">Basic Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="creatorName">Creator Name *</label>
+                            <input type="text" id="creatorName" name="creatorName" placeholder="Your stage/creator name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bio">Bio *</label>
+                            <textarea id="bio" name="bio" placeholder="Tell us about yourself and what you create..." rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location *</label>
+                            <input type="text" id="location" name="location" placeholder="City, State" required>
+                        </div>
+                    </div>
+
+                    <!-- Platform Info -->
+                    <div class="form-section">
+                        <h3 class="section-title">Your Platform</h3>
+                        
+                        <div class="form-group">
+                            <label for="platform">Main Platform *</label>
+                            <select id="platform" name="platform" required>
+                                <option value="">Select your platform</option>
+                                <option value="YouTube">YouTube</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="TikTok">TikTok</option>
+                                <option value="Twitch">Twitch</option>
+                                <option value="Twitter">Twitter/X</option>
+                                <option value="Multi-Platform">Multi-Platform</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="niche">Your Niche *</label>
+                            <select id="niche" name="niche" required>
+                                <option value="">Select your niche</option>
+                                <option value="Music">Music</option>
+                                <option value="Video">Video</option>
+                                <option value="Photography">Photography</option>
+                                <option value="Fashion">Fashion</option>
+                                <option value="Gaming">Gaming</option>
+                                <option value="Tech">Tech</option>
+                                <option value="Lifestyle">Lifestyle</option>
+                                <option value="Comedy">Comedy</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Tags -->
+                    <div class="form-section">
+                        <h3 class="section-title">Skills & Interests</h3>
+                        
+                        <div class="form-group">
+                            <label>Select up to 5 skills</label>
+                            <div class="tags-grid">
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="skills" value="Video Editing">
+                                    <span>Video Editing</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="skills" value="Music Production">
+                                    <span>Music Production</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="skills" value="Photography">
+                                    <span>Photography</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="skills" value="Graphic Design">
+                                    <span>Graphic Design</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="skills" value="Content Writing">
+                                    <span>Content Writing</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="skills" value="Animation">
+                                    <span>Animation</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="skills" value="Sound Design">
+                                    <span>Sound Design</span>
+                                </label>
+                                <label class="tag-checkbox">
+                                    <input type="checkbox" name="skills" value="Streaming">
+                                    <span>Streaming</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Image -->
+                    <div class="form-section">
+                        <h3 class="section-title">Profile Image</h3>
+                        
+                        <div class="form-group">
+                            <label for="profileImage">Upload Profile Picture</label>
+                            <div class="file-upload-area">
+                                <input type="file" id="profileImage" name="profileImage" accept="image/*">
+                                <div class="upload-placeholder">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <p>Click to upload or drag and drop</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="submit-profile-btn">CREATE PROFILE</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Handle onboarding form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('profileForm');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Gather form data
+                    const formData = new FormData(form);
+                    const skills = [];
+                    formData.getAll('skills').forEach(skill => skills.push(skill));
+                    
+                    const profileData = {
+                        creatorName: formData.get('creatorName'),
+                        bio: formData.get('bio'),
+                        location: formData.get('location'),
+                        platform: formData.get('platform'),
+                        niche: formData.get('niche'),
+                        skills: skills,
+                        createdAt: new Date().toISOString()
+                    };
+                    
+                    // Handle profile image
+                    const fileInput = document.getElementById('profileImage');
+                    if (fileInput.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            profileData.profileImage = e.target.result;
+                            localStorage.setItem('creatorProfile', JSON.stringify(profileData));
+                            window.location.href = 'features.html';
+                        };
+                        reader.readAsDataURL(fileInput.files[0]);
+                    } else {
+                        localStorage.setItem('creatorProfile', JSON.stringify(profileData));
+                        window.location.href = 'features.html';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

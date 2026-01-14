@@ -1,13 +1,105 @@
 // Cinematic Intro Animation
 let introPlayed = false;
 
+// Profile Gating System
+function checkProfile() {
+    const profile = localStorage.getItem('creatorProfile');
+    return profile !== null;
+}
+
+function unlockGatedContent() {
+    const gatedSections = document.querySelectorAll('.gated-section');
+    gatedSections.forEach(section => {
+        section.classList.add('unlocked');
+    });
+}
+
+function initProfileGating() {
+    const hasProfile = checkProfile();
+    
+    if (hasProfile) {
+        // User has profile, unlock all gated content
+        unlockGatedContent();
+    } else {
+        // User doesn't have profile, redirect GET STARTED button to onboarding
+        const getStartedBtn = document.querySelector('.cta-get-started');
+        if (getStartedBtn) {
+            getStartedBtn.addEventListener('click', () => {
+                window.location.href = 'onboarding.html';
+            });
+        }
+    }
+}
+
 function initIntro() {
     const canvas = document.getElementById('topoCanvas');
     if (canvas) {
         canvas.style.display = 'none'; // Hide the wave animation
     }
     
-    // End intro after 9 seconds
+    // Hide the globe logo after 2 seconds to show creator photos
+    const introGlobe = document.getElementById('introGlobe');
+    setTimeout(() => {
+        if (introGlobe) {
+            introGlobe.style.opacity = '0';
+            introGlobe.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                introGlobe.style.display = 'none';
+            }, 500);
+        }
+    }, 2000);
+    
+    // Animate creator connection points on the globe
+    const connectionPoints = document.getElementById('connectionPoints');
+    if (connectionPoints) {
+        const pointPositions = [
+            { top: '20%', left: '30%' },
+            { top: '40%', left: '70%' },
+            { top: '60%', left: '20%' },
+            { top: '25%', left: '80%' },
+            { top: '70%', left: '50%' },
+            { top: '45%', left: '15%' },
+            { top: '80%', left: '75%' },
+            { top: '35%', left: '45%' }
+        ];
+        
+        // Add connection points with staggered animation
+        pointPositions.forEach((pos, index) => {
+            setTimeout(() => {
+                const point = document.createElement('div');
+                point.className = 'connection-point';
+                point.style.top = pos.top;
+                point.style.left = pos.left;
+                point.style.animationDelay = `${index * 0.15}s`;
+                connectionPoints.appendChild(point);
+                
+                // Draw connection lines between nearby points
+                if (index > 0 && index % 2 === 0) {
+                    const prevIndex = index - 1;
+                    const line = document.createElement('div');
+                    line.className = 'connection-line';
+                    
+                    const x1 = parseFloat(pointPositions[prevIndex].left);
+                    const y1 = parseFloat(pointPositions[prevIndex].top);
+                    const x2 = parseFloat(pos.left);
+                    const y2 = parseFloat(pos.top);
+                    
+                    const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                    
+                    line.style.width = `${length}%`;
+                    line.style.left = pointPositions[prevIndex].left;
+                    line.style.top = pointPositions[prevIndex].top;
+                    line.style.transform = `rotate(${angle}deg)`;
+                    line.style.animationDelay = `${index * 0.3 + 0.5}s`;
+                    
+                    connectionPoints.appendChild(line);
+                }
+            }, index * 600);
+        });
+    }
+    
+    // End intro after 8 seconds for smoother animation experience
     setTimeout(() => {
         const overlay = document.getElementById('introOverlay');
         if (overlay) {
@@ -15,9 +107,12 @@ function initIntro() {
             setTimeout(() => {
                 overlay.style.display = 'none';
                 introPlayed = true;
+                
+                // After intro, scroll to top to show landing content
+                window.scrollTo(0, 0);
             }, 1000);
         }
-    }, 9000);
+    }, 8000);
 }
 
 // Slideshow functionality
@@ -74,10 +169,52 @@ function goToSlide(index) {
     slideshowInterval = setInterval(nextSlide, 4000);
 }
 
+// Hamburger Menu Toggle
+function initMenuToggle() {
+    const menuToggle = document.getElementById('menuToggle');
+    const hiddenMenu = document.getElementById('hiddenMenu');
+    
+    if (menuToggle && hiddenMenu) {
+        menuToggle.addEventListener('click', function() {
+            hiddenMenu.classList.toggle('active');
+            
+            // Animate hamburger lines
+            const lines = this.querySelectorAll('.menu-line');
+            if (hiddenMenu.classList.contains('active')) {
+                lines[0].style.transform = 'rotate(45deg) translateY(8px)';
+                lines[1].style.opacity = '0';
+                lines[2].style.transform = 'rotate(-45deg) translateY(-8px)';
+            } else {
+                lines[0].style.transform = 'none';
+                lines[1].style.opacity = '1';
+                lines[2].style.transform = 'none';
+            }
+        });
+        
+        // Close menu when clicking a link
+        const menuLinks = hiddenMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hiddenMenu.classList.remove('active');
+                const lines = menuToggle.querySelectorAll('.menu-line');
+                lines[0].style.transform = 'none';
+                lines[1].style.opacity = '1';
+                lines[2].style.transform = 'none';
+            });
+        });
+    }
+}
+
 // Search functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize profile gating first
+    initProfileGating();
+    
     // Initialize cinematic intro
     initIntro();
+    
+    // Initialize menu toggle
+    initMenuToggle();
     
     const searchBtn = document.querySelector('.search-btn');
     const categoryPills = document.querySelectorAll('.pill');
@@ -123,33 +260,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Search button click handler - scroll to creators section
-    searchBtn.addEventListener('click', function() {
-        const searchQuery = searchInput.value;
-        const location = locationInput.value;
-        
-        // Store search parameters
-        if (searchQuery || location) {
-            sessionStorage.setItem('searchQuery', searchQuery);
-            sessionStorage.setItem('searchLocation', location);
-        }
-        
-        // Smooth scroll to creators section
-        smoothScrollTo('creators');
-    });
+    // Search button click handler - scroll to creators section (only if exists)
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function() {
+            const searchQuery = searchInput.value;
+            const location = locationInput.value;
+            
+            // Store search parameters
+            if (searchQuery || location) {
+                sessionStorage.setItem('searchQuery', searchQuery);
+                sessionStorage.setItem('searchLocation', location);
+            }
+            
+            // Smooth scroll to creators section
+            smoothScrollTo('creators');
+        });
+    }
 
-    // Enter key handler for search
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            searchBtn.click();
-        }
-    });
+    // Enter key handler for search (only if exists)
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && searchBtn) {
+                searchBtn.click();
+            }
+        });
+    }
 
-    locationInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            searchBtn.click();
-        }
-    });
+    if (locationInput) {
+        locationInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && searchBtn) {
+                searchBtn.click();
+            }
+        });
+    }
 
     // Category pill click handlers
     categoryPills.forEach(pill => {
@@ -252,41 +395,21 @@ const platformIcons = {
 };
 
 // Create creator card HTML
-function createCreatorCard(creator) {
-    return `
-        <div class="creator-card">
-            <div class="card-image-wrapper">
-                <img src="${creator.image}" alt="${creator.name}" class="card-image">
-                <div class="platform-badge">
-                    <span class="platform-icon">${platformIcons[creator.platform]}</span>
-                    ${creator.platform}
-                </div>
-            </div>
-            <div class="card-content">
-                <h3 class="creator-name">${creator.name}</h3>
-                <p class="creator-role">${creator.role}</p>
-                <div class="creator-location">
-                    <svg class="location-icon-small" width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10 1c-3.866 0-7 3.134-7 7 0 5.25 7 11 7 11s7-5.75 7-11c0-3.866-3.134-7-7-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>${creator.location} · ${creator.distance}</span>
-                </div>
-                <div class="creator-tags">
-                    ${creator.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                </div>
-                <button class="connect-btn" onclick="connectWithCreator('${creator.name}')">Connect</button>
-            </div>
-        </div>
-    `;
-}
-
 // Render all creator cards
 function renderCreators() {
     const grid = document.getElementById('creatorsGrid');
-    if (grid) {
-        grid.innerHTML = creators.map(creator => createCreatorCard(creator)).join('');
-    }
+    if (!grid) return;
+    
+    // Add active status to every 3rd creator
+    const creatorsWithStatus = creators.map((creator, index) => ({
+        ...creator,
+        active: (index + 1) % 3 === 0
+    }));
+    
+    grid.innerHTML = creatorsWithStatus.map(creator => createCreatorCard(creator)).join('');
+    
+    // Initialize scroll reveal for mobile
+    initScrollReveal();
 }
 
 // Connect button handler
@@ -390,7 +513,7 @@ const blogPosts = [
         date: 'Jan 10, 2026',
         title: '5 Tips for Successful Creator Collaborations',
         description: 'Learn how to build meaningful partnerships that elevate your content and grow your audience together.',
-        image: 'blogimages/collaboration.jpg',
+        image: 'latestfromtheblogphotos/67cb90d77a4a43b193168a4b_AMP_Tone_Group_Shot_ML_Sq.webp',
         link: '#'
     },
     {
@@ -399,7 +522,7 @@ const blogPosts = [
         date: 'Jan 8, 2026',
         title: 'How Local Networking Can Transform Your Content',
         description: 'Discover why connecting with creators in your city leads to better content and stronger creative bonds.',
-        image: 'blogimages/networking.jpg',
+        image: 'latestfromtheblogphotos/Gemini_Generated_Image_5p85ag5p85ag5p85.png',
         link: '#'
     },
     {
@@ -408,7 +531,7 @@ const blogPosts = [
         date: 'Jan 5, 2026',
         title: 'Cross-Platform Success Stories',
         description: 'Real stories from creators who found their perfect collab partners and achieved breakthrough growth.',
-        image: 'blogimages/success.jpg',
+        image: 'latestfromtheblogphotos/Gemini_Generated_Image_my5z59my5z59my5z.png',
         link: '#'
     }
 ];
@@ -568,26 +691,29 @@ function renderCollabBoard() {
 // Underground Section Data & Functions
 const undergroundStories = {
     featured: {
-        title: 'The Rise of LA\'s New Wave',
-        category: 'Creator Spotlight',
-        excerpt: 'How a collective of young creators are reshaping the city\'s creative landscape with raw authenticity and collaborative energy.',
-        image: 'blogimages/collaboration.jpg'
+        title: 'Speed\'s Africa Tour: A Cultural Movement',
+        category: 'Impact',
+        excerpt: 'IShowSpeed\'s electrifying tour across Africa has touched millions, bringing joy, inspiration, and global attention to African communities while celebrating their vibrant culture.',
+        image: 'undergroundimages/IShowSpeed-in-Africa-1024x533.png'
     },
     stories: [
         {
-            title: 'Behind the Lens: Shooting on iPhone',
-            category: 'Tutorial',
-            excerpt: 'Pro cinematographer breaks down how to achieve cinema-quality footage using just your smartphone.'
+            title: 'The Rise of LA\'s New Wave',
+            category: 'Creator Spotlight',
+            excerpt: 'How a collective of young creators are reshaping the city\'s creative landscape with raw authenticity and collaborative energy.',
+            image: 'undergroundimages/1616-GQ-CV01-01-KL-GQstyle.webp'
         },
         {
-            title: 'The Creator Economy in 2026',
-            category: 'Industry',
-            excerpt: 'New data reveals how independent creators are outearning traditional media professionals.'
+            title: 'The King of DanceHall',
+            category: 'Music',
+            excerpt: 'Vybz Kartel makes his triumphant return to Dancehall after years away, reclaiming his throne in the genre he helped define.',
+            image: 'undergroundimages/8665853.jpeg'
         },
         {
             title: 'Studio Sessions: Building Your Space',
             category: 'Gear Review',
-            excerpt: 'Essential equipment and design tips for creating a professional home studio on any budget.'
+            excerpt: 'Essential equipment and design tips for creating a professional home studio on any budget.',
+            image: 'undergroundimages/studio-setup.jpg'
         }
     ],
     events: [
@@ -628,6 +754,7 @@ function renderUnderground() {
     if (storyContainer) {
         storyContainer.innerHTML = undergroundStories.stories.map(story => `
             <div class="story-card">
+                <img src="${story.image}" alt="${story.title}" class="story-card-image">
                 <div class="story-card-content">
                     <p class="story-category">${story.category}</p>
                     <h4 class="story-title">${story.title}</h4>
@@ -783,6 +910,38 @@ function initTouchAnimations() {
     // Only run on touch devices
     if (!('ontouchstart' in window)) return;
     
+    // Long-press for quick actions on creator cards
+    const creatorCards = document.querySelectorAll('.creator-card');
+    let longPressTimer;
+    
+    creatorCards.forEach(card => {
+        card.addEventListener('touchstart', function(e) {
+            // Start long-press timer
+            longPressTimer = setTimeout(() => {
+                card.classList.add('active');
+                // Haptic feedback if available
+                if (navigator.vibrate) {
+                    navigator.vibrate(50);
+                }
+            }, 500);
+        });
+        
+        card.addEventListener('touchend', function() {
+            clearTimeout(longPressTimer);
+        });
+        
+        card.addEventListener('touchmove', function() {
+            clearTimeout(longPressTimer);
+        });
+    });
+    
+    // Close overlay when tapping outside
+    document.addEventListener('touchstart', function(e) {
+        if (!e.target.closest('.creator-card')) {
+            creatorCards.forEach(card => card.classList.remove('active'));
+        }
+    });
+    
     // Add liquid tap effect to interactive elements
     const tapElements = document.querySelectorAll('.creator-card, .blog-card, .collab-card, button, .pill');
     
@@ -839,3 +998,189 @@ function setVH() {
 window.addEventListener('resize', setVH);
 window.addEventListener('orientationchange', setVH);
 setVH();
+
+// ========================================
+// SIDE-DRAWER QUICK VIEW FUNCTIONALITY
+// ========================================
+
+const sideDrawer = document.getElementById('sideDrawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+const drawerClose = document.getElementById('drawerClose');
+
+// Open drawer with creator data
+function openQuickView(creator) {
+    document.getElementById('drawerCreatorName').textContent = creator.name;
+    document.getElementById('drawerCreatorRole').textContent = creator.role;
+    document.getElementById('drawerPortfolioImage').src = creator.image;
+    
+    sideDrawer.classList.add('open');
+    drawerOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close drawer
+function closeQuickView() {
+    sideDrawer.classList.remove('open');
+    drawerOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Event listeners for drawer
+if (drawerClose) {
+    drawerClose.addEventListener('click', closeQuickView);
+}
+
+if (drawerOverlay) {
+    drawerOverlay.addEventListener('click', closeQuickView);
+}
+
+// Update creator card click to open drawer
+function createCreatorCard(creator) {
+    return `
+        <div class="creator-card ${creator.active ? 'has-pulse' : ''}" onclick="openQuickView(${JSON.stringify(creator).replace(/"/g, '&quot;')})">
+            ${creator.active ? '<div class="pulse-indicator"></div>' : ''}
+            <div class="card-image-wrapper">
+                <img src="${creator.image}" alt="${creator.name}" class="card-image">
+                <div class="platform-badge">
+                    <span class="platform-icon">${platformIcons[creator.platform]}</span>
+                    ${creator.platform}
+                </div>
+            </div>
+            <div class="card-content">
+                <h3 class="creator-name">${creator.name}</h3>
+                <p class="creator-role">${creator.role}</p>
+                <div class="creator-location">
+                    <svg class="location-icon-small" width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 1c-3.866 0-7 3.134-7 7 0 5.25 7 11 7 11s7-5.75 7-11c0-3.866-3.134-7-7-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>${creator.location} · ${creator.distance}</span>
+                </div>
+                <div class="creator-tags">
+                    ${creator.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                <button class="connect-btn" onclick="event.stopPropagation(); connectWithCreator('${creator.name}')">Connect</button>
+            </div>
+        </div>
+    `;
+}
+
+// ========================================
+// VIBE FILTERS FUNCTIONALITY
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const vibeButtons = document.querySelectorAll('.vibe-btn');
+    
+    vibeButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active from all
+            vibeButtons.forEach(b => b.classList.remove('active'));
+            // Add active to clicked
+            this.classList.add('active');
+            
+            const vibe = this.textContent.trim();
+            console.log(`Filtering by vibe: ${vibe}`);
+            
+            // Add your filter logic here
+            // For now, just re-render creators
+            renderCreators();
+        });
+    });
+});
+
+// Update creators data to include active status
+const creatorsWithStatus = creators.map((creator, index) => ({
+    ...creator,
+    active: index % 3 === 0 // Mark every 3rd creator as active (for demo)
+}));
+
+// Re-render with updated data
+function renderCreators() {
+    const grid = document.getElementById('creatorsGrid');
+    if (grid) {
+        grid.innerHTML = creatorsWithStatus.map(creator => createCreatorCard(creator)).join('');
+        
+        // Initialize scroll-triggered color reveal for mobile
+        initScrollReveal();
+    }
+}
+
+// ========================================
+// SCROLL-TRIGGERED COLOR REVEAL (MOBILE)
+// ========================================
+
+function initScrollReveal() {
+    // Only apply on mobile/tablet (non-hover devices)
+    if (!window.matchMedia('(hover: none)').matches) {
+        return;
+    }
+    
+    const creatorCards = document.querySelectorAll('.creator-card');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3 // Trigger when 30% of card is visible
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add revealed class to trigger color transition
+                entry.target.classList.add('revealed');
+                
+                // Optional: Stop observing once revealed
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all creator cards
+    creatorCards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Call on initial page load
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollReveal();
+    initButtonNavigation();
+});
+
+// ========================================
+// BUTTON NAVIGATION TO ONBOARDING
+// ========================================
+
+function initButtonNavigation() {
+    // Get all buttons that should navigate to onboarding
+    const getStartedBtn = document.querySelector('.cta-get-started');
+    const postProjectBtn = document.querySelector('.post-project-btn');
+    const pitchCollabBtn = document.getElementById('pitchCollabBtn');
+    const connectBtns = document.querySelectorAll('.connect-btn');
+    
+    // Navigate to onboarding page
+    function navigateToOnboarding(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = 'onboarding.html';
+    }
+    
+    // Add event listeners
+    if (getStartedBtn) {
+        getStartedBtn.addEventListener('click', navigateToOnboarding);
+    }
+    
+    if (postProjectBtn) {
+        postProjectBtn.addEventListener('click', navigateToOnboarding);
+    }
+    
+    if (pitchCollabBtn) {
+        pitchCollabBtn.addEventListener('click', navigateToOnboarding);
+    }
+    
+    // Connect buttons in creator cards
+    connectBtns.forEach(btn => {
+        btn.addEventListener('click', navigateToOnboarding);
+    });
+}
