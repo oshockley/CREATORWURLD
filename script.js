@@ -577,7 +577,7 @@ const areaCreatorsData = [
         id: 1,
         name: 'HillBoyNeal',
         niche: 'Music Producer',
-        avatar: 'creatorimages/hillboy.jpg',
+        avatar: 'creatorimages/Bruin-JoshPartee-6206.jpg',
         live: true,
         distance: '2.3 miles'
     },
@@ -585,7 +585,7 @@ const areaCreatorsData = [
         id: 2,
         name: 'Kai Cenat',
         niche: 'Content Creator',
-        avatar: 'creatorimages/kai.jpg',
+        avatar: 'creatorimages/cover-kai-cenat-2025-billboard-bb2-andrew-hetherington-8-1240.webp',
         live: true,
         distance: '3.7 miles'
     },
@@ -593,7 +593,7 @@ const areaCreatorsData = [
         id: 3,
         name: 'DDG',
         niche: 'Artist/Creator',
-        avatar: 'creatorimages/ddg.jpg',
+        avatar: 'creatorimages/aHR0cDovL2ltYWdlLmloZWFydC5jb20vaW1hZ2VzL2FydGlzdHMvMDgvNjcvMTAvNjdmNDMzYWVhNWZiNWIzMTBhNTRiYzU5LmpwZw==.webp',
         live: false,
         distance: '5.1 miles'
     }
@@ -624,7 +624,7 @@ const collabPosts = [
         creator: {
             name: 'HillBoyNeal',
             niche: 'Music Producer',
-            avatar: 'creatorimages/hillboy.jpg'
+            avatar: 'creatorimages/Bruin-JoshPartee-6206.jpg'
         },
         title: 'Need Video Director for Music Video',
         description: 'Looking for a creative video director to bring my new single to life. Think Travis Scott meets Blade Runner vibes.',
@@ -637,7 +637,7 @@ const collabPosts = [
         creator: {
             name: 'Kai Cenat',
             niche: 'Content Creator',
-            avatar: 'creatorimages/kai.jpg'
+            avatar: 'creatorimages/cover-kai-cenat-2025-billboard-bb2-andrew-hetherington-8-1240.webp'
         },
         title: 'Podcast Editor Needed',
         description: 'Looking for someone who can turn 3 hour streams into fire podcast clips. Fast turnaround essential.',
@@ -650,7 +650,7 @@ const collabPosts = [
         creator: {
             name: 'PlaqueBoyMax',
             niche: 'Photographer',
-            avatar: 'creatorimages/max.jpg'
+            avatar: 'creatorimages/440fd791b3249426abec2e05ef0b1b39_1753080563_1082_square_l.webp'
         },
         title: 'Models for Fashion Shoot',
         description: 'Urban fashion shoot this weekend. Need 2-3 models comfortable with streetwear aesthetic. Portfolio building opportunity.',
@@ -713,7 +713,7 @@ const undergroundStories = {
             title: 'Studio Sessions: Building Your Space',
             category: 'Gear Review',
             excerpt: 'Essential equipment and design tips for creating a professional home studio on any budget.',
-            image: 'undergroundimages/studio-setup.jpg'
+            image: 'undergroundimages/1616-GQ-CV01-01-KL-GQstyle.webp'
         }
     ],
     events: [
@@ -795,14 +795,14 @@ const conversations = [
     {
         id: 2,
         name: 'DDG',
-        avatar: 'creatorimages/ddg.jpg',
+        avatar: 'creatorimages/aHR0cDovL2ltYWdlLmloZWFydC5jb20vaW1hZ2VzL2FydGlzdHMvMDgvNjcvMTAvNjdmNDMzYWVhNWZiNWIzMTBhNTRiYzU5LmpwZw==.webp',
         preview: 'Studio session next week?',
         active: false
     },
     {
         id: 3,
         name: 'PlaqueBoyMax',
-        avatar: 'creatorimages/max.jpg',
+        avatar: 'creatorimages/440fd791b3249426abec2e05ef0b1b39_1753080563_1082_square_l.webp',
         preview: 'Thanks for the shoot yesterday! 🔥',
         active: false
     }

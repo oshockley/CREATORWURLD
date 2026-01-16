@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Map - CREATORWURLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="grain-overlay"></div>
+            <div class="navbar-grid">
+                <div class="grid-line grid-v" style="left: 30%"></div>
+                <div class="grid-line grid-v" style="left: 70%"></div>
+            </div>
+            <div class="container">
+                <div class="nav-brand">
+                    <svg class="logo-globe" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" stroke="white" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="16" rx="5" ry="14" stroke="white" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="16" rx="14" ry="5" stroke="white" stroke-width="1.5" fill="none"/>
+                        <line x1="16" y1="2" x2="16" y2="30" stroke="white" stroke-width="1.5"/>
+                        <line x1="2" y1="16" x2="30" y2="16" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                    <h1><a href="creators.html" class="brand-link">CREATORWURLD</a></h1>
+                </div>
+                <div class="nav-actions">
+                    <button class="menu-toggle" id="menuToggle">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Hidden Menu -->
+            <div class="hidden-menu" id="hiddenMenu">
+                <ul class="menu-links">
+                    <li><a href="creators.html">Creators</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="board.html">Board</a></li>
+                    <li><a href="#underground">Underground</a></li>
+                    <li><a href="inbox.html">Inbox</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Discovery Map Section -->
+        <section class="discovery-section" id="discovery">
+            <div class="grain-overlay"></div>
+            <div class="section-grid">
+                <div class="grid-line grid-h" style="top: 25%"></div>
+                <div class="grid-line grid-h" style="top: 50%"></div>
+                <div class="grid-line grid-h" style="top: 75%"></div>
+                <div class="grid-line grid-v" style="left: 25%"></div>
+                <div class="grid-line grid-v" style="left: 75%"></div>
+            </div>
+            
+            <div class="discovery-container">
+                <!-- Filter Sidebar -->
+                <aside class="filter-sidebar">
+                    <h3 class="filter-title">MAP</h3>
+                    <div class="filter-divider"></div>
+                    <h4 class="filter-section-title">TYPE</h4>
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="music">Music</button>
+                        <button class="filter-btn" data-filter="video">Video</button>
+                        <button class="filter-btn" data-filter="fashion">Fashion</button>
+                        <button class="filter-btn" data-filter="photography">Photography</button>
+                    </div>
+                    
+                    <div class="area-list">
+                        <h3 class="area-title">IN YOUR AREA</h3>
+                        <div class="area-creators" id="areaCreators">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Map Container -->
+                <div class="map-container">
+                    <div id="discoveryMap" class="discovery-map">
+                        <!-- 3D Globe -->
+                        <div class="globe-3d">
+                            <div class="globe-sphere">
+                                <!-- Latitude lines -->
+                                <div class="globe-line lat-line" style="transform: rotateX(0deg) translateZ(150px)"></div>
+                                <div class="globe-line lat-line" style="transform: rotateX(30deg) translateZ(150px)"></div>
+                                <div class="globe-line lat-line" style="transform: rotateX(60deg) translateZ(150px)"></div>
+                                <div class="globe-line lat-line" style="transform: rotateX(90deg) translateZ(150px)"></div>
+                                <div class="globe-line lat-line" style="transform: rotateX(120deg) translateZ(150px)"></div>
+                                <div class="globe-line lat-line" style="transform: rotateX(150deg) translateZ(150px)"></div>
+                                
+                                <!-- Longitude lines -->
+                                <div class="globe-line lon-line" style="transform: rotateY(0deg) translateZ(150px)"></div>
+                                <div class="globe-line lon-line" style="transform: rotateY(30deg) translateZ(150px)"></div>
+                                <div class="globe-line lon-line" style="transform: rotateY(60deg) translateZ(150px)"></div>
+                                <div class="globe-line lon-line" style="transform: rotateY(90deg) translateZ(150px)"></div>
+                                <div class="globe-line lon-line" style="transform: rotateY(120deg) translateZ(150px)"></div>
+                                <div class="globe-line lon-line" style="transform: rotateY(150deg) translateZ(150px)"></div>
+                                
+                                <!-- Creator markers on globe -->
+                                <div class="globe-marker" style="transform: rotateY(20deg) rotateX(30deg) translateZ(152px)"></div>
+                                <div class="globe-marker" style="transform: rotateY(80deg) rotateX(-20deg) translateZ(152px)"></div>
+                                <div class="globe-marker" style="transform: rotateY(-40deg) rotateX(10deg) translateZ(152px)"></div>
+                                <div class="globe-marker" style="transform: rotateY(120deg) rotateX(40deg) translateZ(152px)"></div>
+                                <div class="globe-marker" style="transform: rotateY(-100deg) rotateX(-30deg) translateZ(152px)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="creators.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/>
+                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>CREATORS</span>
+        </a>
+        <a href="map.html" class="nav-item active">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>MAP</span>
+        </a>
+        <a href="board.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 9h18M9 3v18" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>BOARD</span>
+        </a>
+        <a href="inbox.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>INBOX</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

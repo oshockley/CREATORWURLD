@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Inbox - CREATORWURLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="grain-overlay"></div>
+            <div class="navbar-grid">
+                <div class="grid-line grid-v" style="left: 30%"></div>
+                <div class="grid-line grid-v" style="left: 70%"></div>
+            </div>
+            <div class="container">
+                <div class="nav-brand">
+                    <svg class="logo-globe" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" stroke="white" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="16" rx="5" ry="14" stroke="white" stroke-width="1.5" fill="none"/>
+                        <ellipse cx="16" cy="16" rx="14" ry="5" stroke="white" stroke-width="1.5" fill="none"/>
+                        <line x1="16" y1="2" x2="16" y2="30" stroke="white" stroke-width="1.5"/>
+                        <line x1="2" y1="16" x2="30" y2="16" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                    <h1><a href="creators.html" class="brand-link">CREATORWURLD</a></h1>
+                </div>
+                <div class="nav-actions">
+                    <button class="menu-toggle" id="menuToggle">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Hidden Menu -->
+            <div class="hidden-menu" id="hiddenMenu">
+                <ul class="menu-links">
+                    <li><a href="creators.html">Creators</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="board.html">Board</a></li>
+                    <li><a href="#underground">Underground</a></li>
+                    <li><a href="inbox.html">Inbox</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Inbox Section -->
+        <section class="inbox-section" id="inbox">
+            <div class="grain-overlay"></div>
+            <div class="section-grid">
+                <div class="grid-line grid-v" style="left: 35%"></div>
+            </div>
+            
+            <div class="inbox-container">
+                <!-- Conversation List -->
+                <aside class="conversation-list">
+                    <div class="inbox-header">
+                        <h3 class="inbox-title">INBOX</h3>
+                        <button class="new-message-btn">+</button>
+                    </div>
+                    <div class="conversations" id="conversationList">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </aside>
+                
+                <!-- Message Thread -->
+                <div class="message-thread">
+                    <div class="thread-header" id="threadHeader">
+                        <h3>Select a conversation</h3>
+                    </div>
+                    <div class="messages" id="messageThread">
+                        <!-- Messages will appear here -->
+                    </div>
+                    <div class="message-input-container">
+                        <input type="text" class="message-input" placeholder="Type your message...">
+                        <button class="attach-file-btn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 10l-6 6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="send-btn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="creators.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/>
+                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>CREATORS</span>
+        </a>
+        <a href="map.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>MAP</span>
+        </a>
+        <a href="board.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 9h18M9 3v18" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>BOARD</span>
+        </a>
+        <a href="inbox.html" class="nav-item active">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>INBOX</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

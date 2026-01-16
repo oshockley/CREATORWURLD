@@ -13,13 +13,26 @@
     <!-- Cinematic Intro Animation -->
     <div class="intro-overlay" id="introOverlay">
         <div class="intro-globe-container" id="introGlobe">
-            <svg class="intro-globe" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="90" stroke="white" stroke-width="2" fill="none"/>
-                <ellipse cx="100" cy="100" rx="30" ry="90" stroke="white" stroke-width="2" fill="none"/>
-                <ellipse cx="100" cy="100" rx="90" ry="30" stroke="white" stroke-width="2" fill="none"/>
-                <line x1="100" y1="10" x2="100" y2="190" stroke="white" stroke-width="2"/>
-                <line x1="10" y1="100" x2="190" y2="100" stroke="white" stroke-width="2"/>
-            </svg>
+            <!-- 3D Sphere Globe -->
+            <div class="intro-globe-3d">
+                <div class="intro-globe-sphere">
+                    <!-- Latitude lines -->
+                    <div class="intro-globe-line lat-line" style="transform: rotateX(0deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lat-line" style="transform: rotateX(30deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lat-line" style="transform: rotateX(60deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lat-line" style="transform: rotateX(90deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lat-line" style="transform: rotateX(120deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lat-line" style="transform: rotateX(150deg) translateZ(100px)"></div>
+                    
+                    <!-- Longitude lines -->
+                    <div class="intro-globe-line lon-line" style="transform: rotateY(0deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lon-line" style="transform: rotateY(30deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lon-line" style="transform: rotateY(60deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lon-line" style="transform: rotateY(90deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lon-line" style="transform: rotateY(120deg) translateZ(100px)"></div>
+                    <div class="intro-globe-line lon-line" style="transform: rotateY(150deg) translateZ(100px)"></div>
+                </div>
+            </div>
             <div class="connection-points" id="connectionPoints">
                 <!-- Creator connection points will be added via JavaScript -->
             </div>
@@ -105,35 +118,63 @@
 
     <main>
         <section class="hero">
-            <div class="container">
-                <!-- Glass Slideshow -->
-                <div class="glass-slideshow">
-                    <div class="slideshow-container">
-                        <div class="slide active">
-                            <img src="images/02-Travis-Scott-cr-THIBAUT-GREVET-billboard-1548.png" alt="Creator 1">
-                        </div>
-                        <div class="slide">
-                            <img src="images/21b9WfpG4PdmyKEkhch6dZhUoDg0hsvx4F4sL4oO-nA=.jpg" alt="Creator 2">
-                        </div>
-                        <div class="slide">
-                            <img src="images/440fd791b3249426abec2e05ef0b1b39_1753080563_1082_square_l.webp" alt="Creator 3">
-                        </div>
-                        <div class="slide">
-                            <img src="images/cover-kai-cenat-2025-billboard-bb2-andrew-hetherington-8-1240.webp" alt="Creator 4">
-                        </div>
-                        <div class="slide">
-                            <img src="images/ddg-portrait.webp" alt="Creator 5">
-                        </div>
-                    </div>
-                    <div class="slideshow-indicators">
-                        <span class="indicator active" onclick="goToSlide(0)"></span>
-                        <span class="indicator" onclick="goToSlide(1)"></span>
-                        <span class="indicator" onclick="goToSlide(2)"></span>
-                        <span class="indicator" onclick="goToSlide(3)"></span>
-                        <span class="indicator" onclick="goToSlide(4)"></span>
-                    </div>
+            <!-- 3D Wireframe Sphere Background -->
+            <div class="hero-globe-3d">
+                <div class="hero-globe-sphere">
+                    <!-- Latitude lines -->
+                    <div class="hero-globe-line lat-line" style="transform: rotateX(0deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lat-line" style="transform: rotateX(30deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lat-line" style="transform: rotateX(60deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lat-line" style="transform: rotateX(90deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lat-line" style="transform: rotateX(120deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lat-line" style="transform: rotateX(150deg) translateZ(150px)"></div>
+                    
+                    <!-- Longitude lines -->
+                    <div class="hero-globe-line lon-line" style="transform: rotateY(0deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lon-line" style="transform: rotateY(30deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lon-line" style="transform: rotateY(60deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lon-line" style="transform: rotateY(90deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lon-line" style="transform: rotateY(120deg) translateZ(150px)"></div>
+                    <div class="hero-globe-line lon-line" style="transform: rotateY(150deg) translateZ(150px)"></div>
                 </div>
-
+            </div>
+            
+            <!-- 3D Sphere Canvas -->
+            <canvas id="sphereCanvas" class="sphere-canvas"></canvas>
+            
+            <!-- Floating Creator Nodes -->
+            <div class="hero-creator-nodes">
+                <div class="hero-node" style="top: 15%; left: 10%;">
+                    <img src="images/02-Travis-Scott-cr-THIBAUT-GREVET-billboard-1548.png" alt="Creator">
+                </div>
+                <div class="hero-node" style="top: 25%; left: 85%;">
+                    <img src="images/cover-kai-cenat-2025-billboard-bb2-andrew-hetherington-8-1240.webp" alt="Creator">
+                </div>
+                <div class="hero-node" style="top: 70%; left: 8%;">
+                    <img src="images/440fd791b3249426abec2e05ef0b1b39_1753080563_1082_square_l.webp" alt="Creator">
+                </div>
+                <div class="hero-node" style="top: 75%; left: 88%;">
+                    <img src="images/ddg-portrait.webp" alt="Creator">
+                </div>
+                <div class="hero-node" style="top: 45%; left: 5%;">
+                    <img src="creatorimages/ishowspeed_hero.avif" alt="Creator">
+                </div>
+                <div class="hero-node" style="top: 55%; left: 92%;">
+                    <img src="creatorimages/Bruin-JoshPartee-6206.jpg" alt="Creator">
+                </div>
+            </div>
+            
+            <!-- Connection Lines SVG -->
+            <svg class="hero-connections" xmlns="http://www.w3.org/2000/svg">
+                <line class="hero-connection-line" x1="10%" y1="15%" x2="50%" y2="50%"></line>
+                <line class="hero-connection-line" x1="85%" y1="25%" x2="50%" y2="50%"></line>
+                <line class="hero-connection-line" x1="8%" y1="70%" x2="50%" y2="50%"></line>
+                <line class="hero-connection-line" x1="88%" y1="75%" x2="50%" y2="50%"></line>
+                <line class="hero-connection-line" x1="5%" y1="45%" x2="50%" y2="50%"></line>
+                <line class="hero-connection-line" x1="92%" y1="55%" x2="50%" y2="50%"></line>
+            </svg>
+            
+            <div class="container">
                 <div class="hero-content">
                     <h2 class="hero-title-minimal">CREATE YOUR<br>WURLD</h2>
                     <p class="hero-subtitle-minimal">Find your perfect collab partner. Build together.</p>
@@ -221,6 +262,8 @@
         </section>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="sphere3d.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

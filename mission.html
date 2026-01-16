@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission - CREATORWURLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="mission-body">
+    <!-- Entry Overlay -->
+    <div class="mission-entry-overlay" id="entryOverlay">
+        <!-- Scanline Animation -->
+        <div class="scanline-container">
+            <div class="scanline"></div>
+            <div class="scanline" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <!-- Floating Data Particles -->
+        <div class="data-particles" id="dataParticles"></div>
+        
+        <!-- Grid Background -->
+        <div class="grid-background">
+            <div class="grid-line grid-h" style="top: 20%"></div>
+            <div class="grid-line grid-h" style="top: 40%"></div>
+            <div class="grid-line grid-h" style="top: 60%"></div>
+            <div class="grid-line grid-h" style="top: 80%"></div>
+            <div class="grid-line grid-v" style="left: 20%"></div>
+            <div class="grid-line grid-v" style="left: 40%"></div>
+            <div class="grid-line grid-v" style="left: 60%"></div>
+            <div class="grid-line grid-v" style="left: 80%"></div>
+        </div>
+        
+        <!-- Profile Reveal Section -->
+        <div class="profile-reveal-container" id="profileReveal">
+            <div class="profile-frame-assembly">
+                <svg class="profile-border-svg" width="200" height="200" viewBox="0 0 200 200">
+                    <circle class="border-segment segment-1" cx="100" cy="100" r="95" 
+                            stroke="#00ff9d" stroke-width="3" fill="none" 
+                            stroke-dasharray="597" stroke-dashoffset="597"/>
+                    <circle class="border-segment segment-2" cx="100" cy="100" r="88" 
+                            stroke="#00ffff" stroke-width="2" fill="none" 
+                            stroke-dasharray="553" stroke-dashoffset="553"/>
+                </svg>
+                <div class="profile-photo-container">
+                    <img id="profilePhoto" class="profile-photo" alt="Your Profile">
+                    <div class="profile-placeholder">👤</div>
+                    <div class="chromatic-layer chromatic-red"></div>
+                    <div class="chromatic-layer chromatic-blue"></div>
+                </div>
+                <div class="scanning-line"></div>
+            </div>
+            <div class="profile-status-text" id="profileStatus">INITIALIZING...</div>
+        </div>
+        
+        <!-- Main Entry Text -->
+        <div class="entry-text-container">
+            <div class="entry-text" id="entryText"></div>
+            <div class="entry-cursor">_</div>
+        </div>
+        
+        <!-- System Boot Messages -->
+        <div class="boot-messages" id="bootMessages"></div>
+    </div>
+
+    <!-- Mission Container -->
+    <div class="mission-container" id="missionContainer">
+        <!-- Header -->
+        <header class="mission-header">
+            <div class="mission-title-section">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span class="status-text" id="statusText">INITIALIZATION IN PROGRESS</span>
+                </div>
+                <h1 class="mission-title">THE INITIALIZATION</h1>
+                <p class="mission-subtitle">Complete these tasks to unlock your access to CREATORWURLD</p>
+            </div>
+            
+            <div class="mission-progress-section">
+                <div class="progress-label">
+                    <span>PROGRESS</span>
+                    <span class="progress-count" id="progressCount">0/3 COMPLETE</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mission Tasks -->
+        <div class="mission-tasks">
+            <div class="task-item" data-task-id="1">
+                <div class="task-checkbox-wrapper">
+                    <input type="checkbox" class="task-checkbox" id="task1" disabled>
+                    <label for="task1" class="checkbox-custom"></label>
+                </div>
+                <div class="task-content">
+                    <div class="task-header">
+                        <h3 class="task-title">TASK 01: Identify 3 Creators</h3>
+                        <span class="task-status" id="status1">PENDING</span>
+                    </div>
+                    <p class="task-description">
+                        Browse the network and identify 3 creators whose content resonates with your vision. 
+                        This will help us understand your creative interests and match you with the right collaborators.
+                    </p>
+                    <button class="task-complete-btn" data-task="1">COMPLETE TASK</button>
+                </div>
+            </div>
+
+            <div class="task-item" data-task-id="2">
+                <div class="task-checkbox-wrapper">
+                    <input type="checkbox" class="task-checkbox" id="task2" disabled>
+                    <label for="task2" class="checkbox-custom"></label>
+                </div>
+                <div class="task-content">
+                    <div class="task-header">
+                        <h3 class="task-title">TASK 02: Initialize Connection (Vibe Check)</h3>
+                        <span class="task-status" id="status2">PENDING</span>
+                    </div>
+                    <p class="task-description">
+                        Send your first message in the network. Introduce yourself, share your creative goals, 
+                        and start building your presence in CREATORWURLD.
+                    </p>
+                    <button class="task-complete-btn" data-task="2">COMPLETE TASK</button>
+                </div>
+            </div>
+
+            <div class="task-item" data-task-id="3">
+                <div class="task-checkbox-wrapper">
+                    <input type="checkbox" class="task-checkbox" id="task3" disabled>
+                    <label for="task3" class="checkbox-custom"></label>
+                </div>
+                <div class="task-content">
+                    <div class="task-header">
+                        <h3 class="task-title">TASK 03: Post First Transmission</h3>
+                        <span class="task-status" id="status3">PENDING</span>
+                    </div>
+                    <p class="task-description">
+                        Share your first piece of content or project idea with the community. 
+                        Let others know what you're working on and what you're looking to create.
+                    </p>
+                    <button class="task-complete-btn" data-task="3">COMPLETE TASK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Messages -->
+        <div class="system-messages">
+            <div class="system-messages-header">SYSTEM LOG</div>
+            <div class="system-messages-content" id="systemMessages">
+                <div class="system-message">
+                    <span class="message-timestamp">[00:00:00]</span>
+                    <span class="message-text">Initialization sequence started...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unlock Overlay -->
+    <div class="mission-unlock-overlay" id="unlockOverlay">
+        <div class="unlock-content">
+            <div class="unlock-icon">
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                    <circle cx="60" cy="60" r="58" stroke="#00ff00" stroke-width="4" class="unlock-circle"/>
+                    <path d="M35 60L52 77L85 44" stroke="#00ff00" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="unlock-check"/>
+                </svg>
+            </div>
+            <div class="unlock-text">MISSION COMPLETE</div>
+            <div class="unlock-stats">
+                <div class="unlock-stat">
+                    <div class="stat-value">3/3</div>
+                    <div class="stat-label">Tasks Completed</div>
+                </div>
+                <div class="unlock-stat">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Progress</div>
+                </div>
+                <div class="unlock-stat">
+                    <div class="stat-value">GRANTED</div>
+                    <div class="stat-label">Access Status</div>
+                </div>
+            </div>
+            <button class="unlock-enter-btn" id="enterWurldBtn">ENTER THE WURLD</button>
+        </div>
+    </div>
+
+    <script src="mission.js"></script>
+</body>
+</html>

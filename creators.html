@@ -2,41 +2,182 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creators Near You - Creator Collab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Creators - CREATORWURLD</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="fade-in">
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-brand">
-                    <h1><a href="index.html" class="brand-link">Creator Collab</a></h1>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="creators.html">Find Creators</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#join">Join</a></li>
-                </ul>
-            </div>
-        </nav>
+<body>
+    <!-- Simple Header -->
+    <header class="simple-header">
+        <h1 class="header-logo">WURLD</h1>
+        <div class="header-status">
+            <span class="status-dot"></span>
+            <span class="status-text">ONLINE</span>
+        </div>
     </header>
 
-    <main>
-        <section class="creators-section">
-            <div class="container">
-                <div class="creators-header">
-                    <h2 class="creators-title">Creators Near You</h2>
-                    <p class="creators-subtitle">Match with local creators and start collaborating today</p>
+    <main class="creators-main">
+        <!-- Creators Section -->
+        <section class="creators-simple-section">
+            <div class="creators-simple-header">
+                <h2 class="creators-simple-title">CREATORS</h2>
+                <p class="creators-simple-subtitle">2.3 MI RADIUS</p>
+            </div>
+
+            <div class="creators-simple-grid">
+                <!-- Creator Card 1 -->
+                <div class="creator-simple-card">
+                    <div class="creator-simple-image-wrapper">
+                        <img src="images/02-Travis-Scott-cr-THIBAUT-GREVET-billboard-1548.png" alt="Travis Scott" class="creator-simple-image">
+                        <div class="creator-online-indicator"></div>
+                    </div>
+                    <div class="creator-simple-info">
+                        <h3 class="creator-simple-name">Travis Scott</h3>
+                        <p class="creator-simple-category">Music</p>
+                        <p class="creator-simple-distance">0.8 MI</p>
+                        <button class="creator-connect-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="8" x2="20" y2="14" stroke="currentColor" stroke-width="2"/>
+                                <line x1="23" y1="11" x2="17" y2="11" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            CONNECT
+                        </button>
+                    </div>
                 </div>
 
-                <div class="creators-grid" id="creatorsGrid">
-                    <!-- Creator cards will be inserted here by JavaScript -->
+                <!-- Creator Card 2 -->
+                <div class="creator-simple-card">
+                    <div class="creator-simple-image-wrapper">
+                        <img src="images/cover-kai-cenat-2025-billboard-bb2-andrew-hetherington-8-1240.webp" alt="Kai Cenat" class="creator-simple-image">
+                        <div class="creator-online-indicator"></div>
+                    </div>
+                    <div class="creator-simple-info">
+                        <h3 class="creator-simple-name">Kai Cenat</h3>
+                        <p class="creator-simple-category">Streaming</p>
+                        <p class="creator-simple-distance">1.2 MI</p>
+                        <button class="creator-connect-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="8" x2="20" y2="14" stroke="currentColor" stroke-width="2"/>
+                                <line x1="23" y1="11" x2="17" y2="11" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            CONNECT
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Creator Card 3 -->
+                <div class="creator-simple-card">
+                    <div class="creator-simple-image-wrapper">
+                        <img src="creatorimages/ishowspeed_hero.avif" alt="Speed" class="creator-simple-image">
+                        <div class="creator-online-indicator offline"></div>
+                    </div>
+                    <div class="creator-simple-info">
+                        <h3 class="creator-simple-name">Speed</h3>
+                        <p class="creator-simple-category">Gaming</p>
+                        <p class="creator-simple-distance">1.5 MI</p>
+                        <button class="creator-connect-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="8" x2="20" y2="14" stroke="currentColor" stroke-width="2"/>
+                                <line x1="23" y1="11" x2="17" y2="11" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            CONNECT
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Creator Card 4 -->
+                <div class="creator-simple-card">
+                    <div class="creator-simple-image-wrapper">
+                        <img src="images/ddg-portrait.webp" alt="DDG" class="creator-simple-image">
+                        <div class="creator-online-indicator"></div>
+                    </div>
+                    <div class="creator-simple-info">
+                        <h3 class="creator-simple-name">DDG</h3>
+                        <p class="creator-simple-category">Music & Video</p>
+                        <p class="creator-simple-distance">2.1 MI</p>
+                        <button class="creator-connect-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="8" x2="20" y2="14" stroke="currentColor" stroke-width="2"/>
+                                <line x1="23" y1="11" x2="17" y2="11" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            CONNECT
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Creator Card 5 -->
+                <div class="creator-simple-card">
+                    <div class="creator-simple-image-wrapper">
+                        <img src="creatorimages/Bruin-JoshPartee-6206.jpg" alt="Josh Partee" class="creator-simple-image">
+                        <div class="creator-online-indicator offline"></div>
+                    </div>
+                    <div class="creator-simple-info">
+                        <h3 class="creator-simple-name">Josh Partee</h3>
+                        <p class="creator-simple-category">Photography</p>
+                        <p class="creator-simple-distance">2.3 MI</p>
+                        <button class="creator-connect-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="8" x2="20" y2="14" stroke="currentColor" stroke-width="2"/>
+                                <line x1="23" y1="11" x2="17" y2="11" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            CONNECT
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="creators.js"></script>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="creators.html" class="nav-item active">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2"/>
+                <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>CREATORS</span>
+        </a>
+        <a href="map.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>FEED</span>
+        </a>
+        <a href="board.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M3 9h18M9 3v18" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>BOARD</span>
+        </a>
+        <a href="inbox.html" class="nav-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span>INBOX</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
 </body>
 </html>
