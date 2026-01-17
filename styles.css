@@ -6315,7 +6315,8 @@ main {
 /* ===== MISSION SEQUENCE STYLES ===== */
 .mission-body {
     background: #000000;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* ===== ENHANCED ENTRY OVERLAY ===== */
@@ -6801,7 +6802,7 @@ main {
     min-height: 100vh;
     background: #000000;
     color: white;
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 4rem;
     opacity: 0;
     transition: opacity 0.5s ease-out;
     background-image: 
@@ -6809,6 +6810,8 @@ main {
         linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
     background-position: center center;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .mission-container.active {
@@ -7354,7 +7357,7 @@ main {
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .mission-container {
-        padding: 1rem;
+        padding: 1rem 1rem 3rem;
     }
     
     .task-item {
