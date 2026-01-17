@@ -54,66 +54,178 @@
         <!-- Discovery Map Section -->
         <section class="discovery-section" id="discovery">
             <div class="grain-overlay"></div>
-            <div class="section-grid">
-                <div class="grid-line grid-h" style="top: 25%"></div>
-                <div class="grid-line grid-h" style="top: 50%"></div>
-                <div class="grid-line grid-h" style="top: 75%"></div>
-                <div class="grid-line grid-v" style="left: 25%"></div>
-                <div class="grid-line grid-v" style="left: 75%"></div>
-            </div>
             
             <div class="discovery-container">
-                <!-- Filter Sidebar -->
+                <!-- Enhanced Filter Sidebar -->
                 <aside class="filter-sidebar">
-                    <h3 class="filter-title">MAP</h3>
-                    <div class="filter-divider"></div>
-                    <h4 class="filter-section-title">TYPE</h4>
-                    <div class="filter-group">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="music">Music</button>
-                        <button class="filter-btn" data-filter="video">Video</button>
-                        <button class="filter-btn" data-filter="fashion">Fashion</button>
-                        <button class="filter-btn" data-filter="photography">Photography</button>
+                    <div class="filter-header">
+                        <h3 class="filter-title">DISCOVER</h3>
+                        <button class="filter-close" id="filterClose">✕</button>
                     </div>
                     
+                    <div class="filter-divider"></div>
+                    
+                    <!-- Role Filters -->
+                    <div class="filter-section">
+                        <h4 class="filter-section-title">CREATIVE ROLE</h4>
+                        <div class="filter-group">
+                            <button class="filter-btn active" data-filter="all">
+                                <span class="filter-icon">🌐</span>
+                                <span>All Creators</span>
+                                <span class="filter-count" id="countAll">247</span>
+                            </button>
+                            <button class="filter-btn" data-filter="videographer">
+                                <span class="filter-icon">📹</span>
+                                <span>Videographer</span>
+                                <span class="filter-count" id="countVideo">89</span>
+                            </button>
+                            <button class="filter-btn" data-filter="producer">
+                                <span class="filter-icon">🎬</span>
+                                <span>Producer</span>
+                                <span class="filter-count" id="countProducer">64</span>
+                            </button>
+                            <button class="filter-btn" data-filter="editor">
+                                <span class="filter-icon">✂️</span>
+                                <span>Editor</span>
+                                <span class="filter-count" id="countEditor">52</span>
+                            </button>
+                            <button class="filter-btn" data-filter="photographer">
+                                <span class="filter-icon">📷</span>
+                                <span>Photographer</span>
+                                <span class="filter-count" id="countPhoto">42</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-divider"></div>
+                    
+                    <!-- Distance Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-section-title">DISTANCE</h4>
+                        <div class="distance-slider-container">
+                            <input type="range" id="distanceSlider" min="1" max="50" value="10" class="distance-slider">
+                            <div class="distance-display">
+                                <span id="distanceValue">10</span> miles
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-divider"></div>
+                    
+                    <!-- Availability Filter -->
+                    <div class="filter-section">
+                        <h4 class="filter-section-title">AVAILABILITY</h4>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="onlineOnly">
+                            <span>Online Now</span>
+                            <span class="online-dot"></span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="availableOnly">
+                            <span>Available for Work</span>
+                        </label>
+                    </div>
+                    
+                    <div class="filter-divider"></div>
+                    
+                    <!-- Nearby List -->
                     <div class="area-list">
-                        <h3 class="area-title">IN YOUR AREA</h3>
+                        <h3 class="area-title">CLOSEST TO YOU</h3>
                         <div class="area-creators" id="areaCreators">
-                            <!-- Will be populated by JavaScript -->
+                            <!-- Populated by JavaScript -->
                         </div>
                     </div>
                 </aside>
                 
                 <!-- Map Container -->
-                <div class="map-container">
-                    <div id="discoveryMap" class="discovery-map">
-                        <!-- 3D Globe -->
-                        <div class="globe-3d">
-                            <div class="globe-sphere">
-                                <!-- Latitude lines -->
-                                <div class="globe-line lat-line" style="transform: rotateX(0deg) translateZ(150px)"></div>
-                                <div class="globe-line lat-line" style="transform: rotateX(30deg) translateZ(150px)"></div>
-                                <div class="globe-line lat-line" style="transform: rotateX(60deg) translateZ(150px)"></div>
-                                <div class="globe-line lat-line" style="transform: rotateX(90deg) translateZ(150px)"></div>
-                                <div class="globe-line lat-line" style="transform: rotateX(120deg) translateZ(150px)"></div>
-                                <div class="globe-line lat-line" style="transform: rotateX(150deg) translateZ(150px)"></div>
-                                
-                                <!-- Longitude lines -->
-                                <div class="globe-line lon-line" style="transform: rotateY(0deg) translateZ(150px)"></div>
-                                <div class="globe-line lon-line" style="transform: rotateY(30deg) translateZ(150px)"></div>
-                                <div class="globe-line lon-line" style="transform: rotateY(60deg) translateZ(150px)"></div>
-                                <div class="globe-line lon-line" style="transform: rotateY(90deg) translateZ(150px)"></div>
-                                <div class="globe-line lon-line" style="transform: rotateY(120deg) translateZ(150px)"></div>
-                                <div class="globe-line lon-line" style="transform: rotateY(150deg) translateZ(150px)"></div>
-                                
-                                <!-- Creator markers on globe -->
-                                <div class="globe-marker" style="transform: rotateY(20deg) rotateX(30deg) translateZ(152px)"></div>
-                                <div class="globe-marker" style="transform: rotateY(80deg) rotateX(-20deg) translateZ(152px)"></div>
-                                <div class="globe-marker" style="transform: rotateY(-40deg) rotateX(10deg) translateZ(152px)"></div>
-                                <div class="globe-marker" style="transform: rotateY(120deg) rotateX(40deg) translateZ(152px)"></div>
-                                <div class="globe-marker" style="transform: rotateY(-100deg) rotateX(-30deg) translateZ(152px)"></div>
+                <div class="map-wrapper">
+                    <!-- Map Controls -->
+                    <div class="map-controls">
+                        <button class="map-control-btn near-me-btn" id="nearMeBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Near Me</span>
+                        </button>
+                        
+                        <button class="map-control-btn" id="heatmapToggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2"/>
+                                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Heat Map</span>
+                        </button>
+                        
+                        <button class="map-control-btn mobile-filter-toggle" id="mobileFilterToggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <line x1="4" x2="20" y1="6" y2="6" stroke="currentColor" stroke-width="2"/>
+                                <line x1="4" x2="20" y1="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                                <line x1="4" x2="20" y1="18" y2="18" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Filters</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Zoom Controls -->
+                    <div class="zoom-controls">
+                        <button class="zoom-btn" id="zoomIn">+</button>
+                        <button class="zoom-btn" id="zoomOut">−</button>
+                    </div>
+                    
+                    <!-- Map Canvas -->
+                    <div class="map-container" id="mapContainer">
+                        <canvas id="mapCanvas" class="map-canvas"></canvas>
+                        <div class="map-markers" id="mapMarkers">
+                            <!-- Creator markers will be added dynamically -->
+                        </div>
+                        
+                        <!-- Heatmap overlay (hidden by default) -->
+                        <canvas id="heatmapCanvas" class="heatmap-canvas" style="display: none;"></canvas>
+                    </div>
+                    
+                    <!-- Creator Preview Card (shown on hover) -->
+                    <div class="creator-preview" id="creatorPreview" style="display: none;">
+                        <div class="preview-header">
+                            <img class="preview-avatar" id="previewAvatar" src="" alt="">
+                            <div class="preview-info">
+                                <h4 class="preview-name" id="previewName"></h4>
+                                <p class="preview-role" id="previewRole"></p>
+                            </div>
+                            <div class="preview-status" id="previewStatus"></div>
+                        </div>
+                        <div class="preview-work" id="previewWork">
+                            <img class="preview-work-img" id="previewWorkImg" src="" alt="">
+                        </div>
+                        <div class="preview-stats">
+                            <div class="preview-stat">
+                                <span class="stat-value" id="previewDistance"></span>
+                                <span class="stat-label">away</span>
+                            </div>
+                            <div class="preview-stat">
+                                <span class="stat-value" id="previewProjects"></span>
+                                <span class="stat-label">projects</span>
+                            </div>
+                            <div class="preview-stat">
+                                <span class="stat-value" id="previewRating"></span>
+                                <span class="stat-label">rating</span>
                             </div>
                         </div>
+                        <button class="preview-connect-btn" id="previewConnect">
+                            CONNECT
+                        </button>
+                    </div>
+                    
+                    <!-- Cluster Info Popup -->
+                    <div class="cluster-popup" id="clusterPopup" style="display: none;">
+                        <div class="cluster-popup-header">
+                            <span class="cluster-count" id="clusterCount"></span>
+                            <span class="cluster-label">creators in this area</span>
+                        </div>
+                        <button class="cluster-zoom-btn" id="clusterZoomBtn">
+                            Zoom In to Explore
+                        </button>
                     </div>
                 </div>
             </div>
@@ -152,5 +264,6 @@
     </nav>
 
     <script src="script.js"></script>
+    <script src="map.js"></script>
 </body>
 </html>
