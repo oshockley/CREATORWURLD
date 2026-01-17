@@ -18,15 +18,15 @@
             <div class="progress-steps">
                 <div class="step active" data-step="1">
                     <div class="step-number">1</div>
-                    <span>Platform</span>
+                    <span>Who You Are</span>
                 </div>
                 <div class="step" data-step="2">
                     <div class="step-number">2</div>
-                    <span>Skills</span>
+                    <span>Your Craft</span>
                 </div>
                 <div class="step" data-step="3">
                     <div class="step-number">3</div>
-                    <span>Profile</span>
+                    <span>Discover</span>
                 </div>
             </div>
         </div>
@@ -45,58 +45,62 @@
             <div class="onboarding-content">
                 <form class="profile-form" id="profileForm">
                     
-                    <!-- Step 1: Platform Info -->
+                    <!-- Step 1: Essential Info -->
                     <div class="form-step active" data-step="1">
                         <div class="step-header">
-                            <h2 class="step-title">WHERE DO YOU CREATE?</h2>
-                            <p class="step-subtitle">Tell us about your platform presence</p>
+                            <h2 class="step-title">LET'S GET YOU STARTED</h2>
+                            <p class="step-subtitle">Just the basics—takes 15 seconds</p>
                         </div>
                         
                         <div class="form-fields">
                             <div class="form-group">
-                                <label>Main Platform</label>
-                <div class="platform-grid">
-                    <label class="platform-card">
-                        <input type="radio" name="platform" value="YouTube">
-                        <div class="card-content">
-                            <div class="platform-icon youtube">▶</div>
-                            <span>YouTube</span>
-                        </div>
-                    </label>
-                    <label class="platform-card">
-                        <input type="radio" name="platform" value="Instagram">
-                        <div class="card-content">
-                            <div class="platform-icon instagram">📷</div>
-                            <span>Instagram</span>
-                        </div>
-                    </label>
-                    <label class="platform-card">
-                        <input type="radio" name="platform" value="TikTok">
-                        <div class="card-content">
-                            <div class="platform-icon tiktok">🎵</div>
-                            <span>TikTok</span>
-                        </div>
-                    </label>
-                </div>
-            </div>
+                                <label for="creatorName">Your Name *</label>
+                                <input type="text" id="creatorName" name="creatorName" placeholder="e.g., Alex Johnson" required class="input-field">
+                            </div>
 
-            <div class="form-group">
-                <label>Your Niche</label>
-                <div class="niche-grid">
-                    <label class="niche-chip"><input type="radio" name="niche" value="Music"><span>🎵 Music</span></label>
-                    <label class="niche-chip"><input type="radio" name="niche" value="Video"><span>🎬 Video</span></label>
-                    <label class="niche-chip"><input type="radio" name="niche" value="Tech"><span>💻 Tech</span></label>
-                    <label class="niche-chip"><input type="radio" name="niche" value="Lifestyle"><span>✨ Lifestyle</span></label>
-                </div>
-            </div>
-        </div>
-    </div>
+                            <div class="form-group">
+                                <label>Creative Role *</label>
+                                <div class="role-grid">
+                                    <label class="role-chip">
+                                        <input type="radio" name="role" value="Videographer" required>
+                                        <span>📹 Videographer</span>
+                                    </label>
+                                    <label class="role-chip">
+                                        <input type="radio" name="role" value="Producer" required>
+                                        <span>🎬 Producer</span>
+                                    </label>
+                                    <label class="role-chip">
+                                        <input type="radio" name="role" value="Editor" required>
+                                        <span>✂️ Editor</span>
+                                    </label>
+                                    <label class="role-chip">
+                                        <input type="radio" name="role" value="Photographer" required>
+                                        <span>📷 Photographer</span>
+                                    </label>
+                                    <label class="role-chip">
+                                        <input type="radio" name="role" value="Designer" required>
+                                        <span>🎨 Designer</span>
+                                    </label>
+                                    <label class="role-chip">
+                                        <input type="radio" name="role" value="Musician" required>
+                                        <span>🎵 Musician</span>
+                                    </label>
+                                </div>
+                            </div>
 
-                    <!-- Step 2: Skills Selection -->
+                            <div class="form-group">
+                                <label for="location">Location *</label>
+                                <input type="text" id="location" name="location" placeholder="e.g., Los Angeles, CA" required class="input-field">
+                                <p class="input-hint">We'll show you creators nearby</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Skills & Specialties -->
                     <div class="form-step" data-step="2">
                         <div class="step-header">
                             <h2 class="step-title">WHAT'S YOUR SUPERPOWER?</h2>
-                            <p class="step-subtitle">Select up to 5 skills</p>
+                            <p class="step-subtitle">Select 2-4 skills to showcase</p>
                         </div>
                         
                         <div class="form-fields">
@@ -106,6 +110,13 @@
                                     <span class="skill-content">
                                         <div class="skill-icon">✂️</div>
                                         <div class="skill-name">Video Editing</div>
+                                    </span>
+                                </label>
+                                <label class="skill-tag">
+                                    <input type="checkbox" name="skills" value="Cinematography">
+                                    <span class="skill-content">
+                                        <div class="skill-icon">🎥</div>
+                                        <div class="skill-name">Cinematography</div>
                                     </span>
                                 </label>
                                 <label class="skill-tag">
@@ -143,40 +154,117 @@
                                         <div class="skill-name">Sound Design</div>
                                     </span>
                                 </label>
+                                <label class="skill-tag">
+                                    <input type="checkbox" name="skills" value="Color Grading">
+                                    <span class="skill-content">
+                                        <div class="skill-icon">🌈</div>
+                                        <div class="skill-name">Color Grading</div>
+                                    </span>
+                                </label>
+                                <label class="skill-tag">
+                                    <input type="checkbox" name="skills" value="Script Writing">
+                                    <span class="skill-content">
+                                        <div class="skill-icon">✍️</div>
+                                        <div class="skill-name">Script Writing</div>
+                                    </span>
+                                </label>
+                                <label class="skill-tag">
+                                    <input type="checkbox" name="skills" value="Social Media">
+                                    <span class="skill-content">
+                                        <div class="skill-icon">📱</div>
+                                        <div class="skill-name">Social Media</div>
+                                    </span>
+                                </label>
                             </div>
                             <div class="skills-counter">
-                                <span id="skillCount">0</span>/5 selected
+                                <span id="skillCount">0</span>/4 selected
                             </div>
                         </div>
                     </div>
 
-                    <!-- Step 3: Profile Image -->
+                    <!-- Step 3: Nearby Creators Discovery -->
                     <div class="form-step" data-step="3">
                         <div class="step-header">
-                            <h2 class="step-title">SHOW YOUR FACE</h2>
-                            <p class="step-subtitle">Upload your profile picture</p>
+                            <h2 class="step-title">CREATORS NEAR YOU</h2>
+                            <p class="step-subtitle">Check out who's in your area</p>
                         </div>
                         
                         <div class="form-fields">
-                            <div class="profile-upload-container">
-                                <div class="profile-preview" id="profilePreview">
-                                    <div class="preview-placeholder">
-                                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                                            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
-                                            <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>
-                                        <p>No image yet</p>
+                            <div class="nearby-creators" id="nearbyCreators">
+                                <!-- Creator Card 1 -->
+                                <div class="creator-preview-card" data-creator-id="1">
+                                    <div class="creator-avatar">
+                                        <img src="creatorimages/02-Travis-Scott-cr-THIBAUT-GREVET-billboard-1548.png" alt="Creator">
+                                        <div class="online-indicator"></div>
                                     </div>
-                                    <img id="previewImage" style="display: none;">
+                                    <div class="creator-info">
+                                        <h3 class="creator-name">Travis Scott</h3>
+                                        <p class="creator-role">Music Producer</p>
+                                        <p class="creator-distance">0.8 MI away</p>
+                                        <div class="creator-skills">
+                                            <span class="skill-badge">Music Production</span>
+                                            <span class="skill-badge">Sound Design</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="follow-btn" data-creator-id="1">
+                                        <span class="btn-text">FOLLOW</span>
+                                        <span class="btn-check" style="display: none;">✓</span>
+                                    </button>
                                 </div>
-                                <input type="file" id="profileImage" name="profileImage" accept="image/*" style="display: none;">
-                                <button type="button" class="upload-btn" onclick="document.getElementById('profileImage').click()">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    Choose Image
-                                </button>
-                                <p class="upload-hint">JPG, PNG or GIF • Max 5MB</p>
+
+                                <!-- Creator Card 2 -->
+                                <div class="creator-preview-card" data-creator-id="2">
+                                    <div class="creator-avatar">
+                                        <img src="creatorimages/cover-kai-cenat-2025-billboard-bb2-andrew-hetherington-8-1240.webp" alt="Creator">
+                                        <div class="online-indicator"></div>
+                                    </div>
+                                    <div class="creator-info">
+                                        <h3 class="creator-name">Kai Cenat</h3>
+                                        <p class="creator-role">Content Creator</p>
+                                        <p class="creator-distance">1.2 MI away</p>
+                                        <div class="creator-skills">
+                                            <span class="skill-badge">Video Editing</span>
+                                            <span class="skill-badge">Social Media</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="follow-btn" data-creator-id="2">
+                                        <span class="btn-text">FOLLOW</span>
+                                        <span class="btn-check" style="display: none;">✓</span>
+                                    </button>
+                                </div>
+
+                                <!-- Creator Card 3 -->
+                                <div class="creator-preview-card" data-creator-id="3">
+                                    <div class="creator-avatar">
+                                        <img src="creatorimages/Bruin-JoshPartee-6206.jpg" alt="Creator">
+                                        <div class="online-indicator"></div>
+                                    </div>
+                                    <div class="creator-info">
+                                        <h3 class="creator-name">Josh Partee</h3>
+                                        <p class="creator-role">Photographer</p>
+                                        <p class="creator-distance">2.3 MI away</p>
+                                        <div class="creator-skills">
+                                            <span class="skill-badge">Photography</span>
+                                            <span class="skill-badge">Cinematography</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="follow-btn" data-creator-id="3">
+                                        <span class="btn-text">FOLLOW</span>
+                                        <span class="btn-check" style="display: none;">✓</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="discovery-actions">
+                                <p class="action-prompt">Ready to explore more?</p>
+                                <div class="action-buttons">
+                                    <button type="button" class="action-btn secondary" onclick="window.location.href='map.html'">
+                                        🗺️ Explore Map
+                                    </button>
+                                    <button type="submit" class="action-btn primary" id="finishBtn">
+                                        🚀 Enter CREATORWURLD
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
